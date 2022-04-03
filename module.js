@@ -37,10 +37,10 @@ async function main()
         cur_td.onclick = async function() {
             document.getElementById('title').innerText = await getOperatorName(this.id);
             var opDict = [equipDict["uniequip_001_" + this.id.split("_")[2]], equipDict["uniequip_002_" + this.id.split("_")[2]]];
-            var opCond = [missionList["uniequip_002_" + this.id.split("_")[2] + "_1"]["desc"], missionList["uniequip_002_" + this.id.split("_")[2] + "_2"]["desc"]];
+            var opCond = [missionList[opDict[1]["missionList"][0]], missionList[opDict[1]["missionList"][1]]];
             p.innerText = opDict[1]["uniEquipDesc"];
-            bold1.innerText = opCond[0] + "\n";
-            bold2.innerText = opCond[1] + "\n";
+            bold1.innerText = opCond[0]["desc"] + "\n";
+            bold2.innerText = opCond[1]["desc"] + "\n";
         };
         td.push(cur_td);
         if (td.length == 7 || (trcnt * 7) + td.length == Object.keys(equipDict).length / 2)
