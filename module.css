@@ -1,0 +1,21 @@
+.table_title_text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.missionList {
+    font-weight: bold;
+    font-style: oblique;
+}
+
+img {
+    display: block;
+    margin: 0px auto;
+}
+    
+table, td, tr {
+    border: 1px solid;
+    width: 100%;
+    border-collapse: collapse;
+}
