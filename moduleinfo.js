@@ -22,7 +22,7 @@ async function main()
     let moduleInfo = [equipDict["uniequip_001_" + operator.split("_")[2]], equipDict["uniequip_002_" + operator.split("_")[2]]];
     if (equipDict["uniequip_003_" + operator.split("_")[2]] != undefined)
     {
-        moduleInfo.append(equipDict["uniequip_003_" + operator.split("_")[2]]);
+        moduleInfo.push(equipDict["uniequip_003_" + operator.split("_")[2]]);
     }
     let table = document.createElement('table');
     for (pos in moduleInfo)
