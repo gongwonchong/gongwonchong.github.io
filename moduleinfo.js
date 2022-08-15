@@ -33,10 +33,12 @@ async function main()
         let table_title = document.createElement('tr');
         let table_content = document.createElement('td');
         table_content.classList.add('table_title_text');
+        // 기본모듈
         table_content.innerText = moduleInfo[pos]["uniEquipName"];
         table_title.appendChild(table_content);
         table.appendChild(table_title);
 
+        // 일반모듈
         let tr = document.createElement('tr');
         let td = document.createElement('td');
         if (moduleInfo[pos]["missionList"] != undefined)
