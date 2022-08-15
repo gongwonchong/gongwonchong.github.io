@@ -46,6 +46,7 @@ async function main()
         {
             continue;
         }
+        // 항목 만들기
         var cur_td = document.createElement('td');
         var img = document.createElement('img');
         img.src = "https://aceship.github.io/AN-EN-Tags/img/avatars/" + equipDict[pos]["charId"] +".png";
@@ -55,6 +56,7 @@ async function main()
             location.href = 'module.html?operator='+ this.id + "&lang=" + langselect.selectedOptions[0].value;
         };
         td.push(cur_td);
+        // 표 나누기
         if (td.length == 7 || (trcnt * 7) + td.length == Object.keys(equipDict).length / 2)
         {
             var tr = document.createElement('tr');
