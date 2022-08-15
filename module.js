@@ -29,8 +29,9 @@ async function getJSON(reqURL)
 
 async function main()
 {
+    let operator = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/"+ lang + "/gamedata/excel/character_table.json");
     let moduleInfo = (await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" + langselect.selectedOptions[0].value + "/gamedata/excel/uniequip_table.json"));
-    let equipDict = moduleInfo["equipDict"];
+    let charEquip = moduleInfo["charEquip"];
 
     let table = document.createElement('table');
     let thead = document.createElement('thead');
@@ -40,24 +41,22 @@ async function main()
     var trcnt = 0;
     
     // 표 만들기
-    for (pos in equipDict)
+    console.log(Object.keys(charEquip)[Object.keys(charEquip).length - 1]);
+    for (pos in charEquip)
     {
-        if (Object.values(equipDict[pos])[0].split('_')[1] == '001' || Object.values(equipDict[pos])[0].split('_')[1] == '003')
-        {
-            continue;
-        }
         // 항목 만들기
         var cur_td = document.createElement('td');
         var img = document.createElement('img');
-        img.src = "https://aceship.github.io/AN-EN-Tags/img/avatars/" + equipDict[pos]["charId"] +".png";
-        cur_td.id = equipDict[pos]["charId"];
+        img.src = "https://aceship.github.io/AN-EN-Tags/img/avatars/" + pos +".png";
+        cur_td.id = pos;
+        cur_td.innerText = await getOperatorName(pos, operator) + "\n";
         cur_td.appendChild(img);
         cur_td.onclick = async function() {
             location.href = 'module.html?operator='+ this.id + "&lang=" + langselect.selectedOptions[0].value;
         };
         td.push(cur_td);
         // 표 나누기
-        if (td.length == 7 || (trcnt * 7) + td.length == Object.keys(equipDict).length / 2)
+        if (td.length == 7 || pos == Object.keys(charEquip)[Object.keys(charEquip).length - 1])
         {
             var tr = document.createElement('tr');
             for (x of td)
@@ -74,5 +73,9 @@ async function main()
     table.appendChild(tbody);
 
     document.body.appendChild(table);
+}
+async function getOperatorName(code, operator)
+{
+    return operator[code]["name"];
 }
 main();
