@@ -54,7 +54,7 @@ async function main()
             td.appendChild(p1);
 
             // 업그레이드 내용
-            /*
+
             let upgrade_table = document.createElement('table');
             
             for (upgrade_pos of battleEquip[pos["uniEquipId"]]["phases"])
@@ -67,7 +67,6 @@ async function main()
                 upgrade_table.appendChild(upgrade_tr);
             }
             td.appendChild(upgrade_table);
-            */
         }
         // 모듈 스토리
         p2 = document.createElement('p');

@@ -29,7 +29,7 @@ async function getJSON(reqURL)
 
 async function main()
 {
-    let operator = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/"+ lang + "/gamedata/excel/character_table.json");
+    let operator = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/"+ langselect.selectedOptions[0].value + "/gamedata/excel/character_table.json");
     let moduleInfo = (await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" + langselect.selectedOptions[0].value + "/gamedata/excel/uniequip_table.json"));
     let charEquip = moduleInfo["charEquip"];
 
