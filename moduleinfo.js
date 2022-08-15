@@ -1,3 +1,8 @@
+const urlParams = new URL(location.href).searchParams;
+const operator = urlParams.get('operator');
+const lang = urlParams.get('lang');
+console.log(lang);
+
 async function getJSON(reqURL)
 {
     let response = await fetch(reqURL);
@@ -5,18 +10,16 @@ async function getJSON(reqURL)
 }
 async function main()
 {
-    const urlParams = new URL(location.href).searchParams;
-    const operator = urlParams.get('operator');
     const operatorName = await getOperatorName(operator);
-    let module = (await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/ko_KR/gamedata/excel/uniequip_table.json"));
+    let module = (await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/"+ lang + "/gamedata/excel/uniequip_table.json"));
     let equipDict = module["equipDict"];
     let missionList = module["missionList"];
     var img = document.createElement('img');
     img.src = "https://aceship.github.io/AN-EN-Tags/img/avatars/" + operator + ".png";
     img.onclick = async function() {
-        location.href = "index.html";
+        location.href = "index.html?lang=" + lang;
     }
-    document.getElementById('body').appendChild(img);
+    document.body.appendChild(img);
 
     document.title = operatorName;
     let moduleInfo = [equipDict["uniequip_001_" + operator.split("_")[2]], equipDict["uniequip_002_" + operator.split("_")[2]]];
@@ -53,11 +56,11 @@ async function main()
         tr.appendChild(td);
         table.appendChild(tr);
     }
-    document.getElementById('body').appendChild(table);
+    document.body.appendChild(table);
 }
 main();
 async function getOperatorName(code)
 {
-    let operator = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/ko_KR/gamedata/excel/character_table.json");
+    let operator = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/"+ lang + "/gamedata/excel/character_table.json");
     return operator[code]["name"];
 }
