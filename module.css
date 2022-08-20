@@ -19,3 +19,8 @@ table, td, tr {
     width: 100%;
     border-collapse: collapse;
 }
+
+.advanced {
+    color: red;
+    font-weight: bold;
+}

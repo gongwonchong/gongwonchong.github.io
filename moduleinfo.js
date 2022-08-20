@@ -62,7 +62,24 @@ async function main()
                 let upgrade_tr = document.createElement('tr');
                 var update = upgrade_pos["parts"][0];
                 let upgrade_td = document.createElement('td');
-                upgrade_td.innerText = update["overrideTraitDataBundle"]["candidates"][0]["additionalDescription"];
+                var upgrade_innerText = update["overrideTraitDataBundle"]["candidates"][0]["additionalDescription"] ?? update["overrideTraitDataBundle"]["candidates"][0]["overrideDescripton"] ?? "";
+                upgrade_innerText = upgrade_innerText.replaceAll(new RegExp('<(.*?)>', "g"), '/span') ?? upgrade_innerText;
+                var span = upgrade_innerText.split(new RegExp('/span(.*?)span', 'g'));
+                span[0] ?? span.shift();
+                for (span_text of span)
+                {
+                    if(span_text[span_text.length - 1] == '/')
+                    {
+                        var styled_text = document.createElement('span');
+                        styled_text.innerText = span_text.replace('/', '');
+                        styled_text.classList.add('advanced');
+                        upgrade_td.appendChild(styled_text);
+                    }
+                    else
+                    {
+                        upgrade_td.innerHTML += span_text;
+                    }
+                }
                 upgrade_tr.appendChild(upgrade_td);
                 upgrade_table.appendChild(upgrade_tr);
             }
