@@ -15,7 +15,7 @@ async function main()
     let equipDict = module["equipDict"]
     let missionList = module["missionList"];
     var img = document.createElement('img');
-    img.src = "https://aceship.github.io/Aceship/Arknight-Images/main/avatars/" + operator + ".png";
+    img.src = "https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/" + operator + ".png";
     img.onclick = async function() {
         location.href = "index.html?lang=" + lang;
     }
