@@ -47,7 +47,7 @@ async function main()
         // 항목 만들기
         var cur_td = document.createElement('td');
         var img = document.createElement('img');
-        img.src = "https://aceship.github.io/AN-EN-Tags/img/avatars/" + pos +".png";
+        img.src = "https://aceship.github.io/Aceship/Arknight-Images/main/avatars/" + pos +".png";
         cur_td.id = pos;
         cur_td.innerText = await getOperatorName(pos, operator) + "\n";
         cur_td.appendChild(img);
