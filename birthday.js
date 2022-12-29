@@ -7,11 +7,11 @@ async function getJSON(reqURL)
 async function main()
 {
     let handbook_info_table = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/handbook_info_table.json");
-    let cnname = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/ko_KR/gamedata/excel/character_table.json");
+    let cnname = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/excel/character_table.json");
     let krname = await getJSON("https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/ko_KR/gamedata/excel/character_table.json");
     let opInfo = handbook_info_table["handbookDict"];
     let today = new Date();
-    document.title = String(today.getMonth() + 1) + "월 " + String(today.getDate()) + "일" + " 생일 오퍼레이터";
+    document.title = String(today.getMonth() + 1) + "월 " + String(today.getDate()) + "일" + " 생일";
     let table = document.createElement('table');
     var tr = document.createElement('tr');
     let reg = RegExp('[0-9]{0,2}月[0-9]{0,2}日');
